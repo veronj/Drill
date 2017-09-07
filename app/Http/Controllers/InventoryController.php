@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Drill;
+use App\inventory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
-class DrillController extends Controller
+class InventoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,28 +17,14 @@ class DrillController extends Controller
         //
     }
 
-    public function mine()
-    {
-        $drills = Drill::first();
-        //dd($drills->user->inventory);
-        $inventory = $drills->user->inventory;
-        $inventory->ogeum += 10;
-        $inventory->save();
-        $resource = $drills->well->resource;
-        $resource->amount -= 10;
-        $resource->save();
-        Session::flash('message', 'Drill mined 10 units');
-        return redirect('/wells');
-    }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-
+        //
     }
 
     /**
@@ -48,26 +33,18 @@ class DrillController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($id)
+    public function store(Request $request)
     {
-
-        $drill = Drill::create([
-            'user_id' => auth()->id(),
-            'well_id' => $id,
-            'active' => 1
-        ]);
-
-        Session::flash('message', 'Drill installed');
-        return redirect('/wells');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Drill  $drill
+     * @param  \App\inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function show(Drill $drill)
+    public function show(inventory $inventory)
     {
         //
     }
@@ -75,10 +52,10 @@ class DrillController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Drill  $drill
+     * @param  \App\inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Drill $drill)
+    public function edit(inventory $inventory)
     {
         //
     }
@@ -87,10 +64,10 @@ class DrillController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Drill  $drill
+     * @param  \App\inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Drill $drill)
+    public function update(Request $request, inventory $inventory)
     {
         //
     }
@@ -98,10 +75,10 @@ class DrillController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Drill  $drill
+     * @param  \App\inventory  $inventory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Drill $drill)
+    public function destroy(inventory $inventory)
     {
         //
     }
