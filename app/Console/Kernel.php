@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \App\Console\Commands\MineAuto::class
+        'App\Console\Commands\MineAuto'
     ];
 
     /**
@@ -24,10 +24,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-//         $schedule->command('inspire')
-//                  ->hourly();
-
-        $schedule->command('mine')->everyMinute();
+//       $schedule->command('inspire')
+//                 ->everyMinute();
+//
+//        $schedule->command('mine')->everyMinute();
+//        $schedule->exec("touch dummy.txt")->everyMinute();
     }
 
     /**

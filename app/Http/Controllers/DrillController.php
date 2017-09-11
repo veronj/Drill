@@ -22,13 +22,17 @@ class DrillController extends Controller
     {
         $drills = Drill::first();
         //dd($drills->user->inventory);
+        $resource = $drills->well->resource;
+        $amount_mined = round((0.1 * $resource->amount) >= 100 ? 100 : (0.1 * $resource->amount));
+        $resource->amount -= $amount_mined;
+        $resource->save();
+
         $inventory = $drills->user->inventory;
         $inventory->ogeum += 10;
         $inventory->save();
-        $resource = $drills->well->resource;
-        $resource->amount -= 10;
-        $resource->save();
-        Session::flash('message', 'Drill mined 10 units');
+
+
+        Session::flash('message', 'Drill mined ' . $amount_mined . ' units');
         return redirect('/wells');
     }
 
